@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>宋亦涵 - 个人简历</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3b82f6',
+                        secondary: '#64748b',
+                        dark: '#1e293b',
+                        light: '#f8fafc'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .text-shadow {
+                text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            .transition-all-300 {
+                transition: all 300ms ease-in-out;
+            }
+        }
+    </style>
+</head>
+<body class="bg-light text-dark">
+    <!-- 导航栏 -->
+    <nav class="fixed top-0 left-0 right-0 bg-white/90 backdrop-blur-sm shadow-sm z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="#" class="text-xl font-bold text-primary">宋亦涵</a>
+            <div class="hidden md:flex space-x-6">
+                <a href="#home" class="hover:text-primary transition-all-300">首页</a>
+                <a href="#about" class="hover:text-primary transition-all-300">关于我</a>
+                <a href="#skills" class="hover:text-primary transition-all-300">专业技能</a>
+                <a href="#experience" class="hover:text-primary transition-all-300">实习经历</a>
+                <a href="#projects" class="hover:text-primary transition-all-300">项目经历</a>
+                <a href="#education" class="hover:text-primary transition-all-300">教育经历</a>
+            </div>
+            <button class="md:hidden text-dark" id="menu-toggle">
+                <i class="fa fa-bars text-xl"></i>
+            </button>
+        </div>
+        <!-- 移动端菜单 -->
+        <div class="md:hidden hidden bg-white shadow-md absolute w-full" id="mobile-menu">
+            <div class="container mx-auto px-4 py-3 flex flex-col space-y-3">
+                <a href="#home" class="py-2 hover:text-primary transition-all-300">首页</a>
+                <a href="#about" class="py-2 hover:text-primary transition-all-300">关于我</a>
+                <a href="#skills" class="py-2 hover:text-primary transition-all-300">专业技能</a>
+                <a href="#experience" class="py-2 hover:text-primary transition-all-300">实习经历</a>
+                <a href="#projects" class="py-2 hover:text-primary transition-all-300">项目经历</a>
+                <a href="#education" class="py-2 hover:text-primary transition-all-300">教育经历</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 首页 Hero 区域 -->
+    <section id="home" class="pt-24 pb-16 md:pt-32 md:pb-24 bg-gradient-to-br from-primary/5 to-secondary/5">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-8 md:mb-0">
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-shadow">
+                        你好，我是 <span class="text-primary">宋亦涵</span>
+                    </h1>
+                    <p class="text-xl md:text-2xl text-secondary mb-6">
+                        网络空间安全专业 · 运维工程师
+                    </p>
+                    <div class="flex flex-wrap gap-4 mb-8">
+                        <a href="#contact" class="bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary/90 transition-all-300 flex items-center">
+                            <i class="fa fa-envelope mr-2"></i> 联系我
+                        </a>
+                        <a href="#projects" class="border border-primary text-primary px-6 py-3 rounded-lg hover:bg-primary/5 transition-all-300 flex items-center">
+                            <i class="fa fa-code mr-2"></i> 查看项目
+                        </a>
+                    </div>
+                    <div class="flex space-x-4">
+                        <a href="tel:18296522759" class="text-secondary hover:text-primary transition-all-300 flex items-center">
+                            <i class="fa fa-phone mr-2"></i> 18296522759
+                        </a>
+                        <a href="mailto:1514224746@qq.com" class="text-secondary hover:text-primary transition-all-300 flex items-center">
+                            <i class="fa fa-envelope mr-2"></i> 1514224746@qq.com
+                        </a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-center">
+                    <div class="relative">
+                        <div class="w-48 h-48 md:w-64 md:h-64 rounded-full bg-primary/10 flex items-center justify-center">
+                            <div class="w-44 h-44 md:w-60 md:h-60 rounded-full overflow-hidden border-4 border-white shadow-lg">
+                                <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=professional%20ID%20photo%20of%20a%20young%20asian%20man%20with%20short%20black%20hair%2C%20wearing%20a%20dark%20blue%20collared%20shirt%2C%20white%20background%2C%20official%20style&image_size=square" alt="宋亦涵" class="w-full h-full object-cover">
+                            </div>
+                        </div>
+                        <div class="absolute -bottom-4 -right-4 bg-white p-3 rounded-lg shadow-lg">
+                            <span class="text-primary font-bold">21岁</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 关于我 -->
+    <section id="about" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">关于我</h2>
+            <div class="max-w-3xl mx-auto">
+                <div class="bg-gray-50 p-6 rounded-xl shadow-sm">
+                    <h3 class="text-xl font-semibold mb-4 text-primary">个人优势</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <i class="fa fa-check-circle text-primary mt-1 mr-3"></i>
+                            <span>具备网络安全渗透能力与 Linux 运维经验，熟悉安全工具与攻防思维</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa fa-check-circle text-primary mt-1 mr-3"></i>
+                            <span>掌握 Python 开发、AI 辅助编程、语音交互系统开发，技术栈全面</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa fa-check-circle text-primary mt-1 mr-3"></i>
+                            <span>熟练计算机硬件装机、系统维护，动手能力强，热爱技术与硬件优化</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa fa-check-circle text-primary mt-1 mr-3"></i>
+                            <span>曾组织无契约全国大赛青岛黄岛区赛事，具备活动策划与团队协调能力</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa fa-check-circle text-primary mt-1 mr-3"></i>
+                            <span>持有驾驶证、可独立出行，责任心强，学习与执行效率高</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 专业技能 -->
+    <section id="skills" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">专业技能</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- 网络安全 -->
+                <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-all-300">
+                    <div class="text-primary text-3xl mb-4">
+                        <i class="fa fa-shield"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">网络安全</h3>
+                    <p class="text-secondary">熟悉 Kali Linux，掌握 BurpSuite 爆破、漏洞扫描，基础渗透测试</p>
+                </div>
+                <!-- 编程与开发 -->
+                <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-all-300">
+                    <div class="text-primary text-3xl mb-4">
+                        <i class="fa fa-code"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">编程与开发</h3>
+                    <p class="text-secondary">Python 开发，熟悉 Linux 环境，能使用 Cursor 等 AI 辅助编程工具</p>
+                </div>
+                <!-- 硬件与运维 -->
+                <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-all-300">
+                    <div class="text-primary text-3xl mb-4">
+                        <i class="fa fa-server"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">硬件与运维</h3>
+                    <p class="text-secondary">计算机硬件组装、系统安装与维护、DIY 装机、系统优化</p>
+                </div>
+                <!-- 其他能力 -->
+                <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-all-300">
+                    <div class="text-primary text-3xl mb-4">
+                        <i class="fa fa-microphone"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">其他能力</h3>
+                    <p class="text-secondary">语音识别/合成开发、Live2D 交互、多模态系统集成</p>
+                </div>
+            </div>
+            <!-- 资格证书 -->
+            <div class="mt-12 max-w-3xl mx-auto">
+                <h3 class="text-2xl font-semibold mb-6 text-center">资格证书</h3>
+                <div class="bg-white p-6 rounded-xl shadow-sm">
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                        <div class="text-center p-3 border border-gray-200 rounded-lg">
+                            <i class="fa fa-certificate text-primary text-2xl mb-2"></i>
+                            <p>计算机二级</p>
+                        </div>
+                        <div class="text-center p-3 border border-gray-200 rounded-lg">
+                            <i class="fa fa-certificate text-primary text-2xl mb-2"></i>
+                            <p>大学英语四级</p>
+                        </div>
+                        <div class="text-center p-3 border border-gray-200 rounded-lg">
+                            <i class="fa fa-certificate text-primary text-2xl mb-2"></i>
+                            <p>国家信息安全水平证书（一级）</p>
+                        </div>
+                        <div class="text-center p-3 border border-gray-200 rounded-lg">
+                            <i class="fa fa-certificate text-primary text-2xl mb-2"></i>
+                            <p>驾驶证 C1</p>
+                        </div>
+                        <div class="text-center p-3 border border-gray-200 rounded-lg">
+                            <i class="fa fa-certificate text-primary text-2xl mb-2"></i>
+                            <p>普通话二级乙等</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 实习经历 -->
+    <section id="experience" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">实习经历</h2>
+            <div class="max-w-3xl mx-auto">
+                <!-- 歌尔股份有限公司 -->
+                <div class="mb-8">
+                    <div class="flex flex-col md:flex-row md:items-center mb-4">
+                        <h3 class="text-xl font-semibold text-primary">歌尔股份有限公司</h3>
+                        <span class="text-secondary mt-2 md:mt-0 md:ml-auto">2026.04-至今</span>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-xl shadow-sm">
+                        <p class="font-medium mb-3">运维工程师</p>
+                        <ul class="space-y-2 text-secondary">
+                            <li class="flex items-start">
+                                <i class="fa fa-angle-right text-primary mt-1 mr-2"></i>
+                                <span>结合智能穿戴、VR/AR 等核心业务场景，协助维护研发数据安全体系，处理用户侧加密解密相关问题，预计协助完成 100+ 次密钥分发与权限配置操作，保障声学、光学相关核心技术资料的安全合规。</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-angle-right text-primary mt-1 mr-2"></i>
+                                <span>参与研发及办公网络巡检、服务器状态监控与基础故障排查，预计覆盖 80% 以上的办公终端及网络节点，形成完整的巡检记录。</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-angle-right text-primary mt-1 mr-2"></i>
+                                <span>协助完成 IT 资产盘点与台账更新，预计完成 200+ 台设备的信息核对与标签管理。</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-angle-right text-primary mt-1 mr-2"></i>
+                                <span>整理数据安全与研发环境运维相关文档，优化 IT 服务流程，助力故障重复发生率降低 10%。</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-angle-right text-primary mt-1 mr-2"></i>
+                                <span>负责企业 IT 运维与终端技术支持，保障办公及研发环境稳定运行，预计响应并解决 95% 以上的桌面及网络故障，平均处理时长控制在 30 分钟内。</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- 南京联迪信息系统股份有限公司 -->
+                <div>
+                    <div class="flex flex-col md:flex-row md:items-center mb-4">
+                        <h3 class="text-xl font-semibold text-primary">南京联迪信息系统股份有限公司</h3>
+                        <span class="text-secondary mt-2 md:mt-0 md:ml-auto">2026.01-2026.03</span>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-xl shadow-sm">
+                        <p class="font-medium mb-3">语音算法</p>
+                        <ul class="space-y-2 text-secondary">
+                            <li class="flex items-start">
+                                <i class="fa fa-angle-right text-primary mt-1 mr-2"></i>
+                                <span>参与智能语音交互系统研发，基于 GPT-SoVITS 实现语音合成与对话能力，应用于电商网站智能客服场景。</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-angle-right text-primary mt-1 mr-2"></i>
+                                <span>完成语音模型部署、接口联调、前后端交互调试，提升系统响应速度与对话自然度。</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-angle-right text-primary mt-1 mr-2"></i>
+                                <span>协助优化后端 API 接口与数据库索引请求逻辑，保障系统稳定运行与用户体验。</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-angle-right text-primary mt-1 mr-2"></i>
+                                <span>配合团队完成需求分析、功能迭代与问题排查，具备良好的工程化开发与文档编写习惯。</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-angle-right text-primary mt-1 mr-2"></i>
+                                <span>熟悉项目开发流程，具备跨模块协作、问题定位与快速落地能力。</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 项目经历 -->
+    <section id="projects" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">项目经历</h2>
+            <div class="max-w-3xl mx-auto">
+                <div class="bg-white p-6 rounded-xl shadow-sm">
+                    <div class="flex flex-col md:flex-row md:items-center mb-4">
+                        <h3 class="text-xl font-semibold text-primary">Live2D交互技术智能外设推荐助手</h3>
+                        <span class="text-secondary mt-2 md:mt-0 md:ml-auto">2026.01-2026.03</span>
+                    </div>
+                    <p class="font-medium mb-3">独立开发者</p>
+                    <ul class="space-y-2 text-secondary">
+                        <li class="flex items-start">
+                            <i class="fa fa-angle-right text-primary mt-1 mr-2"></i>
+                            <span>独立设计并上线多模态智能外设推荐系统，融合 Live2D 虚拟形象、语音识别与语音合成，实现沉浸式人机交互。</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa fa-angle-right text-primary mt-1 mr-2"></i>
+                            <span>集成 FunASR 语音识别与 GPT-SoVITS 语音合成引擎，完成语音指令接收、意图理解、自然语言回复全流程开发。</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa fa-angle-right text-primary mt-1 mr-2"></i>
+                            <span>基于用户预算、用途与性能参数，构建硬件匹配算法，实现电脑硬件精准推荐，提升推荐效率与用户满意度。</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa fa-angle-right text-primary mt-1 mr-2"></i>
+                            <span>优化后端 API 接口设计、数据库索引与请求逻辑，降低响应延迟，提升系统并发处理能力与稳定性。</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa fa-angle-right text-primary mt-1 mr-2"></i>
+                            <span>接入 Live2D 交互模型，实现视线跟随、情绪反馈、动作联动等动态效果，增强产品可视化与交互体验。</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa fa-angle-right text-primary mt-1 mr-2"></i>
+                            <span>完成系统部署、测试优化、问题排查与版本迭代，具备完整项目从 0 到 1 落地能力。</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 教育经历 -->
+    <section id="education" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">教育经历</h2>
+            <div class="max-w-3xl mx-auto">
+                <div class="bg-gray-50 p-6 rounded-xl shadow-sm">
+                    <div class="flex flex-col md:flex-row md:items-center mb-4">
+                        <h3 class="text-xl font-semibold text-primary">青岛理工大学</h3>
+                        <span class="text-secondary mt-2 md:mt-0 md:ml-auto">2023-2027</span>
+                    </div>
+                    <p class="font-medium mb-3">本科 · 网络空间安全</p>
+                    <h4 class="font-medium mb-2">主修课程</h4>
+                    <p class="text-secondary mb-4">网络安全、操作系统安全、密码学、Web 安全、网络攻防、Linux 系统、Python 程序设计、数据库安全、信息安全管理、计算机网络。</p>
+                    <h4 class="font-medium mb-2">教育成果</h4>
+                    <p class="text-secondary">具备网络安全基础理论与攻防实践能力，熟悉网络协议、安全工具使用与系统安全加固思路。掌握 Python 开发、Linux 环境运维、计算机硬件维护，形成 "安全+开发+运维" 复合技术背景。</p>
+                </div>
+                <!-- 荣誉奖项 -->
+                <div class="mt-8">
+                    <h3 class="text-2xl font-semibold mb-4 text-center">荣誉奖项</h3>
+                    <div class="bg-gray-50 p-6 rounded-xl shadow-sm text-center">
+                        <p class="text-secondary">蓝桥杯省三等奖</p>
+                    </div>
+                </div>
+                <!-- 志愿者经历 -->
+                <div class="mt-8">
+                    <h3 class="text-2xl font-semibold mb-4 text-center">志愿者经历</h3>
+                    <div class="bg-gray-50 p-6 rounded-xl shadow-sm">
+                        <div class="flex flex-col md:flex-row md:items-center mb-4">
+                            <h4 class="text-lg font-medium">青岛海上马拉松</h4>
+                            <span class="text-secondary mt-2 md:mt-0 md:ml-auto">2023.10-2023.10</span>
+                        </div>
+                        <p class="text-secondary">负责站点组织、人员引导与现场秩序维护，具备良好服务意识与执行力</p>
+                    </div>
+                </div>
+                <!-- 社团经历 -->
+                <div class="mt-8">
+                    <h3 class="text-2xl font-semibold mb-4 text-center">社团经历</h3>
+                    <div class="bg-gray-50 p-6 rounded-xl shadow-sm">
+                        <div class="flex flex-col md:flex-row md:items-center mb-4">
+                            <h4 class="text-lg font-medium">硬件社 · 核心成员</h4>
+                            <span class="text-secondary mt-2 md:mt-0 md:ml-auto">2023.10-2025.01</span>
+                        </div>
+                        <p class="text-secondary">负责计算机硬件组装、系统安装、DIY 机制定制等技术支持，向社员普及装机知识与基础网络安全常识，提升社团技术氛围</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系我 -->
+    <section id="contact" class="py-16 bg-primary/5">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">联系我</h2>
+            <div class="max-w-3xl mx-auto">
+                <div class="bg-white p-8 rounded-xl shadow-sm">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <h3 class="text-xl font-semibold mb-4 text-primary">联系方式</h3>
+                            <div class="space-y-4">
+                                <div class="flex items-center">
+                                    <i class="fa fa-phone text-primary text-xl mr-4"></i>
+                                    <span>18296522759</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <i class="fa fa-envelope text-primary text-xl mr-4"></i>
+                                    <span>1514224746@qq.com</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <i class="fa fa-map-marker text-primary text-xl mr-4"></i>
+                                    <span>青岛理工大学</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold mb-4 text-primary">发送消息</h3>
+                            <form id="contact-form">
+                                <div class="mb-4">
+                                    <label for="name" class="block text-sm font-medium mb-2">姓名</label>
+                                    <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary">
+                                </div>
+                                <div class="mb-4">
+                                    <label for="email" class="block text-sm font-medium mb-2">邮箱</label>
+                                    <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary">
+                                </div>
+                                <div class="mb-4">
+                                    <label for="message" class="block text-sm font-medium mb-2">消息</label>
+                                    <textarea id="message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary"></textarea>
+                                </div>
+                                <button type="submit" class="w-full bg-primary text-white py-3 rounded-lg hover:bg-primary/90 transition-all-300">发送消息</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-dark text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <h3 class="text-xl font-bold">宋亦涵</h3>
+                    <p class="text-gray-400">网络空间安全专业 · 运维工程师</p>
+                </div>
+                <div class="flex space-x-4">
+                    <a href="#" class="text-gray-400 hover:text-white transition-all-300">
+                        <i class="fa fa-github text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-all-300">
+                        <i class="fa fa-linkedin text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-all-300">
+                        <i class="fa fa-weixin text-xl"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="mt-6 pt-6 border-t border-gray-700 text-center text-gray-400">
+                <p>&copy; 2026 宋亦涵. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 移动端菜单切换
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    // 关闭移动端菜单
+                    document.getElementById('mobile-menu').classList.add('hidden');
+                }
+            });
+        });
+
+        // 表单提交
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('消息已发送！我会尽快回复您。');
+            this.reset();
+        });
+
+        // 滚动时导航栏效果
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.classList.add('shadow-md');
+                nav.classList.remove('shadow-sm');
+            } else {
+                nav.classList.remove('shadow-md');
+                nav.classList.add('shadow-sm');
+            }
+        });
+    </script>
+</body>
+</html>
