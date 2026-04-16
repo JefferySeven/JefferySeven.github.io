@@ -1,0 +1,80 @@
+import smtplib
+from email.mime.text import MIMEText
+from email.header import Header
+import json
+
+def handler(event, context):
+    """
+    Vercel 或 Serverless 环境下的云函数
+    接收来自简历网站的留言并发送到 QQ 邮箱
+    """
+
+    # 允许跨域请求 (CORS)
+    headers = {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "POST, OPTIONS",
+        "Access-Control-Allow-Headers": "Content-Type",
+    }
+
+    # 处理 OPTIONS 预检请求
+    if event.get("httpMethod") == "OPTIONS" or event.get("method") == "OPTIONS":
+        return {
+            "statusCode": 204,
+            "headers": headers,
+            "body": ""
+        }
+
+    try:
+        # 1. 解析前端发来的 JSON 数据
+        body_str = event.get('body', '{}')
+        if not body_str:
+            body_str = '{}'
+
+        body = json.loads(body_str)
+
+        name = body.get('name', '访客')
+        visitor_email = body.get('email', '未提供')
+        message_content = body.get('message', '无内容')
+
+        # 2. 邮箱配置 (请在此处填入你的信息)
+        smtp_server = "smtp.qq.com"
+        sender_email = "1514224746@qq.com"  # 你的 QQ 邮箱
+        receiver_email = "1514224746@qq.com"  # 接收邮箱 (通常也是你自己)
+        # 注意：auth_code 是你在 QQ 邮箱设置里生成的 16 位授权码，不是 QQ 密码！
+        auth_code = "fcozyvtcdsroheai"
+
+        # 3. 构造邮件
+        mail_text = f"""
+        简历网站收到新留言：
+        --------------------------------
+        姓名：{name}
+        对方邮箱：{visitor_email}
+        消息内容：{message_content}
+        --------------------------------
+        发送时间：自动生成
+        """
+
+        msg = MIMEText(mail_text, 'plain', 'utf-8')
+        msg['From'] = Header(f"网站访客 <{sender_email}>", 'utf-8')
+        msg['To'] = Header("宋亦涵", 'utf-8')
+        msg['Subject'] = Header(f"📩 简历网站新留言: {name}", 'utf-8')
+
+        # 4. 执行发送
+        server = smtplib.SMTP_SSL(smtp_server, 465)
+        server.login(sender_email, auth_code)
+        server.sendmail(sender_email, [receiver_email], msg.as_string())
+        server.quit()
+
+        return {
+            "statusCode": 200,
+            "headers": headers,
+            "body": json.dumps({"status": "success", "message": "已发送到邮箱"})
+        }
+
+    except Exception as e:
+        print(f"Error: {str(e)}")
+        return {
+            "statusCode": 500,
+            "headers": headers,
+            "body": json.dumps({"status": "error", "message": str(e)})
+        }
