@@ -37,17 +37,14 @@ def handler(event, context):
         visitor_email = body.get('email', '未提供')
         message_content = body.get('message', '无内容')
 
+        # 2. 邮箱配置 (从环境变量读取，安全)
         smtp_server = os.environ.get("SMTP_SERVER", "smtp.qq.com")
-        sender_email = os.environ.get("SENDER_EMAIL")
-        receiver_email = os.environ.get("RECEIVER_EMAIL") or sender_email
-        auth_code = os.environ.get("SMTP_AUTH_CODE")
+        sender_email = os.environ.get("SENDER_EMAIL", "")  # 必须在 Netlify 环境变量配置
+        auth_code = os.environ.get("SMTP_AUTH_CODE", "")   # 必须在 Netlify 环境变量配置
+        receiver_email = os.environ.get("RECEIVER_EMAIL", sender_email)
 
-        if not sender_email or not receiver_email or not auth_code:
-            return {
-                "statusCode": 500,
-                "headers": headers,
-                "body": json.dumps({"status": "error", "message": "服务端邮箱配置缺失"})
-            }
+        if not sender_email or not auth_code:
+             raise Exception("服务端未配置邮箱环境变量 (SMTP_AUTH_CODE 或 SENDER_EMAIL)，请在 Netlify 后台配置。")
 
         # 3. 构造邮件
         mail_text = f"""
