@@ -2,6 +2,7 @@ import smtplib
 from email.mime.text import MIMEText
 from email.header import Header
 import json
+import os
 
 def handler(event, context):
     """
@@ -36,12 +37,17 @@ def handler(event, context):
         visitor_email = body.get('email', '未提供')
         message_content = body.get('message', '无内容')
 
-        # 2. 邮箱配置 (请在此处填入你的信息)
-        smtp_server = "smtp.qq.com"
-        sender_email = "1514224746@qq.com"  # 你的 QQ 邮箱
-        receiver_email = "1514224746@qq.com"  # 接收邮箱 (通常也是你自己)
-        # 注意：auth_code 是你在 QQ 邮箱设置里生成的 16 位授权码，不是 QQ 密码！
-        auth_code = "fcozyvtcdsroheai"
+        smtp_server = os.environ.get("SMTP_SERVER", "smtp.qq.com")
+        sender_email = os.environ.get("SENDER_EMAIL")
+        receiver_email = os.environ.get("RECEIVER_EMAIL") or sender_email
+        auth_code = os.environ.get("SMTP_AUTH_CODE")
+
+        if not sender_email or not receiver_email or not auth_code:
+            return {
+                "statusCode": 500,
+                "headers": headers,
+                "body": json.dumps({"status": "error", "message": "服务端邮箱配置缺失"})
+            }
 
         # 3. 构造邮件
         mail_text = f"""
